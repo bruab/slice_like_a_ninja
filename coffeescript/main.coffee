@@ -1,12 +1,14 @@
 $ ->
+	currentScore = 0
 	variableName = "var"
 	currentString = "foo"
 	targetString = "fo"
-	currentStringHtml = "<h5>#{variableName} = " + '"'
+	currentStringHtml = "<h3>#{variableName} = " + '"'
 	currentStringHtml += "#{currentString}"
-	currentStringHtml += '"</h5>'
+	currentStringHtml += '"</h3>'
 	$('#currentString').html currentStringHtml
-	$('#targetString').html "<h5>#{targetString}</h5>"
+	$('#targetString').html "<h3>#{targetString}</h3>"
+	$('#currentScore').html currentScore
 
 	## FUNCTIONS ##
 	
@@ -14,13 +16,15 @@ $ ->
 	inputCallback = (input, term) ->
 		result = parseInput input
 		if result == targetString
+			currentScore += 5
+			$('#currentScore').html currentScore
 			term.clear()
 			[currentString, targetString] = getNewStrings()
-			currentStringHtml = "<h5>#{variableName} = " + '"'
+			currentStringHtml = "<h3>#{variableName} = " + '"'
 			currentStringHtml += "#{currentString}"
-			currentStringHtml += '"</h5>'
+			currentStringHtml += '"</h3>'
 			$('#currentString').html currentStringHtml
-			$('#targetString').html "<h5>#{targetString}</h5>"
+			$('#targetString').html "<h3>#{targetString}</h3>"
 			return
 		else
 			return result
@@ -61,7 +65,6 @@ $ ->
 					fullResult = result
 					result = ""
 					for i in [0..numChars-1]
-						alert i*stepSize
 						result += fullResult[i*stepSize]
 				return result
 
@@ -92,7 +95,7 @@ $ ->
 		  prompt: '>>> ',\
 		  onBlur: false,\ # keeps terminal in focus
 		  name: 'ninja_terminal',\
-		  height: 300,
+		  height: 200,
 		  exceptionHandler: (error) -> console.log error,
 		})
 
