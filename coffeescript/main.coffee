@@ -55,9 +55,9 @@ $ ->
 				if not stepSize
 					stepSize = 1
 				console.log [firstIndex, secondIndex, stepSize]
-				# TODO implement step
 				result = currentString[firstIndex..secondIndex-1]
 				if stepSize < 0
+					# TODO this is not implemented correctly
 					result = result.split("").reverse().join("")
 				stepSize = Math.abs stepSize
 				if stepSize > 1
