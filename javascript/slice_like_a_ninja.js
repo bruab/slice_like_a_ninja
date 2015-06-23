@@ -3,7 +3,7 @@
   $(function() {
     var currentScore, currentString, currentStringHtml, example, getNewStrings, inputCallback, parseInput, targetString, variableName;
     currentScore = 0;
-    variableName = "var";
+    variableName = "my_string";
     currentString = "foo";
     targetString = "fo";
     currentStringHtml = ("<h3>" + variableName + " = ") + '"';
@@ -77,13 +77,16 @@
     };
     getNewStrings = function() {
       var pairs, randomPair;
-      pairs = [["doggy", "dog"], ["catheter", "cat"], ["couscous", "us"], ["spartacus", "part"], ["robocop", "poco"], ["pacer", "pcr"]];
+      pairs = [["doggy", "dog"], ["catheter", "cat"], ["couscous", "us"], ["spartacus", "part"], ["pacer", "pcr"], ["dog", "god"]];
       randomPair = pairs[Math.floor(Math.random() * pairs.length)];
       return randomPair;
     };
     example = function() {
       var exampleHtml;
-      exampleHtml = "<h3>Example goes here</h3>";
+      exampleHtml = "<h1>Example</h1>";
+      exampleHtml += '<p>If my_string="';
+      exampleHtml += 'foo" and the target string is "fo", type</p>';
+      exampleHtml += "<p>my_string[::2]</p>";
       $('#exampleText').html(exampleHtml);
       $('#exampleScreen').foundation('reveal', 'open');
     };
