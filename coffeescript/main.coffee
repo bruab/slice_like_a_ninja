@@ -58,6 +58,8 @@ $ ->
 				result = currentString[firstIndex..secondIndex-1]
 				if stepSize < 0
 					# TODO this is not implemented correctly
+					# should be able to do "01234"[4:1:-1]
+					# and get "432"
 					result = result.split("").reverse().join("")
 				stepSize = Math.abs stepSize
 				if stepSize > 1
